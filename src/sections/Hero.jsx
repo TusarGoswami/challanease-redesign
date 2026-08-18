@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import ChallanCard from '../components/ChallanCard'
 import SuccessConfetti from '../components/SuccessConfetti'
 import ChallanDetailModal from '../components/ChallanDetailModal'
+import CarLoader from '../components/CarLoader'
 import { lookupChallan } from '../data/demoChallan'
 
 export default function Hero() {
@@ -270,12 +271,8 @@ export default function Hero() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="flex items-center gap-2 text-sm text-navy-500 py-6 justify-center"
-                      role="status"
-                      aria-live="polite"
                     >
-                      <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
-                      Checking demo record…
+                      <CarLoader />
                     </motion.div>
                   )}
 
