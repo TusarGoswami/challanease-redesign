@@ -75,7 +75,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden"
+      className="relative pt-28 sm:pt-36 pb-10 sm:pb-12 overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* Premium Dotted Grid Pattern Backdrop */}
@@ -106,7 +106,7 @@ export default function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full bg-sky-500/10 px-3.5 py-1.5 text-xs font-semibold text-sky-600 ring-1 ring-sky-500/20 mb-6">
               <span className="w-2 h-2 rounded-full bg-sky-500 animate-ping" aria-hidden="true" />
-              Redesign Concept
+              Concept redesign · e-Challan experience
             </div>
 
             <h1
@@ -285,49 +285,105 @@ export default function Hero() {
                       transition={{ duration: 0.3 }}
                       role="region"
                       aria-label="Challan lookup results"
+                      className="space-y-4"
                     >
-                      {/* Success header */}
-                      <div className="flex items-center gap-2 text-green-800 bg-green-50 rounded-xl px-3 py-2.5 text-xs font-semibold mb-4 border border-green-100">
-                        <CheckCircle2 className="w-4 h-4 shrink-0 text-green-600 animate-bounce" aria-hidden="true" />
-                        Demo record found for {result.vehicleNumber}
+                      {/* Success Alert Header */}
+                      <div className="flex items-center gap-2 text-green-800 bg-green-50 rounded-xl px-3.5 py-2.5 text-xs font-semibold border border-green-100/50">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
+                        <span>Challan found</span>
+                        <span className="ml-auto font-mono text-navy-600 bg-white px-2 py-0.5 rounded border border-navy-100">
+                          {result.vehicleNumber}
+                        </span>
                       </div>
 
-                      {/* Summary stats */}
-                      <div className="grid grid-cols-3 gap-2 mb-4">
-                        <div className="rounded-xl bg-navy-50/80 px-3 py-2.5 text-center border border-navy-100/30">
-                          <p className="text-lg font-extrabold text-navy-950">{result.challans.length}</p>
-                          <p className="text-[10px] font-medium text-navy-400 uppercase">Total</p>
+                      {/* Main Product Stats Card */}
+                      <div className="rounded-2xl border border-navy-100 bg-white p-4 space-y-4">
+                        {/* Status + Amount Row */}
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <span className="text-[10px] uppercase font-extrabold tracking-wider text-navy-400">
+                              Status
+                            </span>
+                            <div className="mt-1">
+                              {result.challans.some(c => c.status === 'pending') ? (
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700 border border-amber-100">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                                  Payment pending
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-700 border border-green-100">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                  All Paid
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-[10px] uppercase font-extrabold tracking-wider text-navy-400">
+                              Amount Due
+                            </span>
+                            <p className="text-2xl font-extrabold text-navy-950 mt-0.5">
+                              ₹{result.challans
+                                .filter(c => c.status === 'pending')
+                                .reduce((s, c) => s + c.amount, 0)
+                                .toLocaleString('en-IN')}
+                            </p>
+                          </div>
                         </div>
-                        <div className="rounded-xl bg-amber-50/80 px-3 py-2.5 text-center border border-amber-100/30">
-                          <p className="text-lg font-extrabold text-amber-800">
-                            {result.challans.filter(c => c.status === 'pending').length}
-                          </p>
-                          <p className="text-[10px] font-medium text-navy-400 uppercase">Pending</p>
-                        </div>
-                        <div className="rounded-xl bg-green-50/80 px-3 py-2.5 text-center border border-green-100/30">
-                          <p className="text-lg font-extrabold text-green-800">
-                            ₹{result.challans.filter(c => c.status === 'pending').reduce((s, c) => s + c.amount, 0).toLocaleString('en-IN')}
-                          </p>
-                          <p className="text-[10px] font-medium text-navy-400 uppercase">Due</p>
-                        </div>
-                      </div>
 
-                      {/* Challan list */}
-                      <div className="space-y-3">
-                        {result.challans.map((ch, i) => (
-                          <motion.div
-                            key={ch.id}
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 + i * 0.1 }}
-                          >
-                            <ChallanCard
-                              challan={ch}
-                              compact
-                              onViewDetails={() => setSelectedChallan(ch)}
-                            />
-                          </motion.div>
-                        ))}
+                        {/* Violation details summary */}
+                        <div className="border-t border-navy-100/60 pt-3 space-y-2">
+                          <p className="text-[10px] uppercase font-extrabold tracking-wider text-navy-400">
+                            Primary Violations
+                          </p>
+                          {result.challans.map((ch) => (
+                            <div key={ch.id} className="flex justify-between items-center text-sm py-2 border-b border-navy-50/50 last:border-0">
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <p className="font-semibold text-navy-900">{ch.violation}</p>
+                                  <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                                    ch.status === 'pending'
+                                      ? 'bg-amber-50 text-amber-600 border border-amber-100'
+                                      : 'bg-green-50 text-green-600 border border-green-100'
+                                  }`}>
+                                    {ch.status}
+                                  </span>
+                                </div>
+                                <p className="text-xs text-navy-400 mt-0.5">
+                                  {ch.date} · {ch.location}
+                                </p>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => setSelectedChallan(ch)}
+                                className="text-xs font-semibold text-sky-500 hover:text-sky-600 px-2 py-1 hover:bg-sky-50 rounded-lg transition-colors cursor-pointer"
+                              >
+                                View Details ➔
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Divider & Action */}
+                        <div className="border-t border-navy-100/60 pt-3 flex items-center justify-between">
+                          <div>
+                            <p className="text-xs font-bold text-navy-900">What you can do</p>
+                            <p className="text-[10px] text-navy-400">Resolve penalty via demo portal</p>
+                          </div>
+                          {result.challans.some(c => c.status === 'pending') ? (
+                            <button
+                              type="button"
+                              onClick={() => setSelectedChallan(result.challans.find(c => c.status === 'pending'))}
+                              className="px-3.5 py-2 text-xs font-bold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-colors cursor-pointer"
+                            >
+                              Resolve Now
+                            </button>
+                          ) : (
+                            <span className="text-xs font-semibold text-green-600 bg-green-50 px-2.5 py-1.5 rounded-xl border border-green-100">
+                              ✓ Cleared
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       <p className="mt-4 text-xs text-navy-400 text-center">
