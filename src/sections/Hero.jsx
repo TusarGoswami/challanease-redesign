@@ -145,22 +145,6 @@ export default function Hero() {
                 How it works
               </Button>
             </div>
-
-            {/* Quick check indicators */}
-            <div className="mt-10 flex flex-wrap gap-6 text-xs text-navy-400">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-green-500" aria-hidden="true" />
-                No sign-up or OTP
-              </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-green-500" aria-hidden="true" />
-                Instant camera checks
-              </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-green-500" aria-hidden="true" />
-                Plain-language violations
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Column: Interactive Card Plate Demo */}
