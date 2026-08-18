@@ -47,11 +47,10 @@ export default function ProductShowcase() {
             id="showcase-heading"
             className="text-3xl sm:text-h2 font-bold tracking-tight text-white"
           >
-            See what it looks like
+            See the experience
           </h2>
           <p className="mt-4 text-base sm:text-body-lg text-navy-300 leading-relaxed">
-            A dashboard designed around what matters — your pending challans,
-            amounts, and next steps. All in one view.
+            Show how a confusing task becomes a clear next step.
           </p>
         </div>
 
