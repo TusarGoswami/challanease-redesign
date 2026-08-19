@@ -16,13 +16,31 @@ export default function CtaSection() {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="rounded-2xl sm:rounded-3xl bg-navy-900 p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden"
         >
-          {/* Subtle glow */}
+          {/* Bottom glow */}
           <div
             className="absolute inset-0"
             aria-hidden="true"
             style={{
               background:
-                'radial-gradient(ellipse 50% 50% at 50% 100%, rgba(56, 189, 248, 0.1) 0%, transparent 60%)',
+                'radial-gradient(ellipse 50% 50% at 50% 100%, rgba(56, 189, 248, 0.12) 0%, transparent 60%)',
+            }}
+          />
+          {/* Top glow */}
+          <div
+            className="absolute inset-0"
+            aria-hidden="true"
+            style={{
+              background:
+                'radial-gradient(ellipse 40% 30% at 50% 0%, rgba(34, 211, 238, 0.08) 0%, transparent 60%)',
+            }}
+          />
+          {/* Subtle dot pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.06]"
+            aria-hidden="true"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(255,255,255,0.8) 1px, transparent 0)',
+              backgroundSize: '20px 20px',
             }}
           />
 
@@ -39,8 +57,7 @@ export default function CtaSection() {
             </p>
             <Button
               size="lg"
-              variant="primary"
-              className="bg-white! text-navy-900! hover:bg-navy-100!"
+              variant="cta"
               onClick={() =>
                 document.getElementById('challan-lookup')?.scrollIntoView({ behavior: 'smooth' })
               }
@@ -54,3 +71,4 @@ export default function CtaSection() {
     </section>
   )
 }
+
