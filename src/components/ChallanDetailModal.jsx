@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { X, Calendar, MapPin, Shield, AlertTriangle, FileText, Camera, CreditCard, ChevronRight } from 'lucide-react'
+import { X, Calendar, MapPin, Shield, AlertTriangle, Camera, CreditCard } from 'lucide-react'
 import { useState } from 'react'
 import Button from './Button'
 
