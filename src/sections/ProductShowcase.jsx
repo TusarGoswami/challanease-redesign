@@ -4,9 +4,6 @@ import { demoChallanRecords } from '../data/demoChallan'
 import useCountUp from '../hooks/useCountUp'
 import {
   Car,
-  MapPin,
-  Calendar,
-  FileText,
   AlertCircle,
   ArrowRight,
   Shield,
