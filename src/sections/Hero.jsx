@@ -1,8 +1,7 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, Loader2, CheckCircle2, Car, ArrowRight, ShieldCheck, Camera, CreditCard } from 'lucide-react'
+import { Search, Loader2, Car, ShieldCheck } from 'lucide-react'
 import Button from '../components/Button'
-import ChallanCard from '../components/ChallanCard'
 import SuccessConfetti from '../components/SuccessConfetti'
 import ChallanDetailModal from '../components/ChallanDetailModal'
 import CarLoader from '../components/CarLoader'
@@ -80,7 +79,7 @@ export default function Hero() {
     >
       {/* Premium Dotted Grid Pattern Backdrop */}
       <div
-        className="absolute inset-0 -z-20 opacity-[0.45] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+        className="absolute inset-0 -z-20 opacity-[0.55] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_60%,transparent_100%)]"
         style={{
           backgroundImage: 'radial-gradient(#0ea5e9 1px, transparent 0)',
           backgroundSize: '24px 24px',
@@ -90,8 +89,8 @@ export default function Hero() {
 
       {/* Backdrop glowing gradient spheres */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute top-[-10%] left-[25%] w-[400px] h-[400px] rounded-full bg-sky-300/10 blur-[80px] animate-pulse" />
-        <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-cyan-300/10 blur-[60px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] rounded-full bg-sky-400/15 blur-[100px]" />
+        <div className="absolute top-[15%] right-[5%] w-[400px] h-[400px] rounded-full bg-cyan-400/12 blur-[80px]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -105,7 +104,7 @@ export default function Hero() {
             className="lg:col-span-6 max-w-xl lg:pt-8 lg:sticky lg:top-28"
           >
             <div className="inline-flex items-center gap-2 rounded-full bg-sky-500/10 px-3.5 py-1.5 text-xs font-semibold text-sky-600 ring-1 ring-sky-500/20 mb-6">
-              <span className="w-2 h-2 rounded-full bg-sky-500 animate-ping" aria-hidden="true" />
+              <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" aria-hidden="true" />
               Concept redesign · e-Challan experience
             </div>
 
@@ -132,7 +131,7 @@ export default function Hero() {
                   document.getElementById('challan-lookup')?.scrollIntoView({ behavior: 'smooth' })
                 }
               >
-                <Search className="w-4 h-4 animate-pulse" aria-hidden="true" />
+                <Search className="w-4 h-4" aria-hidden="true" />
                 Check a Challan
               </Button>
               <Button
@@ -149,15 +148,15 @@ export default function Hero() {
             {/* Quick check indicators */}
             <div className="mt-10 flex flex-wrap gap-6 text-xs text-navy-500 font-medium">
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-green-500" aria-hidden="true" />
+                <ShieldCheck className="w-4 h-4 text-green-500" />
                 Clear status
               </div>
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-green-500" aria-hidden="true" />
+                <ShieldCheck className="w-4 h-4 text-green-500" />
                 Simple next steps
               </div>
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-green-500" aria-hidden="true" />
+                <ShieldCheck className="w-4 h-4 text-green-500" />
                 Mobile-first experience
               </div>
             </div>
@@ -172,7 +171,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
               className="w-full relative z-10"
             >
-              <div className="rounded-3xl border border-navy-100 bg-white shadow-product p-5 sm:p-6 relative overflow-hidden">
+              <div className="rounded-3xl border border-navy-100 bg-white shadow-product p-5 sm:p-6 relative overflow-hidden ring-1 ring-sky-100/50">
                 {/* Confetti on success */}
                 {showConfetti && <SuccessConfetti />}
 
@@ -180,7 +179,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center" aria-hidden="true">
-                      <Car className="w-4 h-4 text-sky-400 animate-pulse" />
+                      <Car className="w-4 h-4 text-sky-400" />
                     </div>
                     <div>
                       <h2 className="text-sm font-semibold text-navy-900">Check your challan</h2>
@@ -289,7 +288,7 @@ export default function Hero() {
                     >
                       {/* Success Alert Header */}
                       <div className="flex items-center gap-2 text-green-800 bg-green-50 rounded-xl px-3.5 py-2.5 text-xs font-semibold border border-green-100/50">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                         <span>Challan found</span>
                         <span className="ml-auto font-mono text-navy-600 bg-white px-2 py-0.5 rounded border border-navy-100">
                           {result.vehicleNumber}
@@ -307,7 +306,7 @@ export default function Hero() {
                             <div className="mt-1">
                               {result.challans.some(c => c.status === 'pending') ? (
                                 <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700 border border-amber-100">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                                   Payment pending
                                 </span>
                               ) : (
@@ -420,6 +419,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Section bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-surface pointer-events-none" aria-hidden="true" />
 
       {/* Challan Detail Modal */}
       <AnimatePresence>
