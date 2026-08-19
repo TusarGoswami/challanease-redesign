@@ -236,4 +236,13 @@ body {
   background-size: 24px 100%;
 }
 
+/* ==============================
+   Card glow effect for hero lookup
+   ============================== */
+.card-glow {
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.08),
+    0 8px 40px rgba(56, 189, 248, 0.06),
+    0 20px 60px rgba(15, 23, 42, 0.12);
+}
 
