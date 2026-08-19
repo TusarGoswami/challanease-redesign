@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 /**
  * Button — primary UI action component.
- * Supports "primary", "secondary", and "ghost" variants.
+ * Supports "primary", "secondary", "ghost", and "cta" variants.
  */
 const Button = forwardRef(function Button(
   { children, variant = 'primary', size = 'md', className = '', ...props },
@@ -18,6 +18,8 @@ const Button = forwardRef(function Button(
       'bg-white text-navy-900 ring-1 ring-navy-200 hover:bg-navy-50 hover:ring-navy-300 active:bg-navy-100',
     ghost:
       'text-navy-600 hover:text-navy-900 hover:bg-navy-50 active:bg-navy-100',
+    cta:
+      'bg-white text-navy-900 hover:bg-navy-100 active:bg-navy-200 shadow-md hover:shadow-lg',
   }
 
   const sizes = {
