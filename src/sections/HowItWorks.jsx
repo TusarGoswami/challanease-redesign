@@ -66,7 +66,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="py-16 sm:py-20"
+      className="py-16 sm:py-20 bg-navy-50/30"
       aria-labelledby="how-it-works-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -105,7 +105,7 @@ export default function HowItWorks() {
                 </div>
               )}
 
-              <div className="rounded-3xl border border-navy-100 bg-white p-6 h-full transition-all duration-300 hover:shadow-product hover:border-navy-200 relative z-10 flex flex-col justify-between">
+              <div className="rounded-3xl border border-navy-100 bg-white p-6 h-full transition-all duration-300 hover:shadow-product hover:border-navy-200 hover:scale-[1.02] relative z-10 flex flex-col justify-between">
                 <div>
                   {/* Step header with circular badge number */}
                   <div className="flex items-center gap-3 mb-4">
