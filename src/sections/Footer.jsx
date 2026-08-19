@@ -62,7 +62,12 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-navy-600 hover:text-navy-900 transition-colors"
+                      className={`text-sm transition-colors ${
+                        link.href === '#'
+                          ? 'text-navy-400 cursor-default'
+                          : 'text-navy-600 hover:text-navy-900'
+                      }`}
+                      {...(link.href === '#' ? { tabIndex: -1, 'aria-disabled': true } : {})}
                     >
                       {link.label}
                     </a>
