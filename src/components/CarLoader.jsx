@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 /**
  * CarLoader — a custom 2D animated car loader.
  * Simulates a car driving on a road with spinning wheels, bouncing body,
